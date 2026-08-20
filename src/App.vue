@@ -3,182 +3,413 @@ const obras = [
   {
     titulo: 'The Call of Cthulhu',
     ano: '1926',
+    categoria: 'Conto',
     descricao:
-      'Uma investigação sobre um culto misterioso e uma entidade ancestral que repousa nas profundezas do oceano.',
+      'Um culto secreto, sonhos perturbadores e a descoberta de uma entidade ancestral adormecida nas profundezas do Pacífico.',
   },
   {
     titulo: 'The Shadow over Innsmouth',
     ano: '1936',
+    categoria: 'Conto',
     descricao:
-      'Um viajante chega à decadente cidade de Innsmouth e descobre segredos que deveriam permanecer esquecidos.',
+      'Uma cidade decadente, habitantes estranhos e uma linhagem que esconde uma ligação aterradora com o oceano.',
   },
   {
     titulo: 'At the Mountains of Madness',
     ano: '1936',
+    categoria: 'Novela',
     descricao:
-      'Uma expedição à Antártida revela vestígios de uma civilização muito mais antiga que a própria humanidade.',
+      'Uma expedição à Antártida encontra vestígios de uma civilização alienígena muito mais antiga que a humanidade.',
+  },
+  {
+    titulo: 'The Colour Out of Space',
+    ano: '1927',
+    categoria: 'Conto',
+    descricao:
+      'Uma estranha presença caída do céu começa a corromper a terra, os animais e tudo aquilo que vive ao seu redor.',
+  },
+  {
+    titulo: 'The Dunwich Horror',
+    ano: '1928',
+    categoria: 'Conto',
+    descricao:
+      'Um segredo familiar, rituais proibidos e uma criatura que não deveria existir entre os homens.',
+  },
+  {
+    titulo: 'The Shadow Out of Time',
+    ano: '1936',
+    categoria: 'Novela',
+    descricao:
+      'Memórias impossíveis e uma consciência humana projetada através do tempo revelam horrores inimagináveis.',
+  },
+]
+
+const entidades = [
+  {
+    numero: '01',
+    nome: 'Cthulhu',
+    descricao: 'O Grande Antigo adormecido na cidade submersa de R’lyeh.',
+  },
+  {
+    numero: '02',
+    nome: 'Yog-Sothoth',
+    descricao: 'A entidade associada aos portais, ao espaço e ao próprio tempo.',
+  },
+  {
+    numero: '03',
+    nome: 'Azathoth',
+    descricao: 'O caos primordial, situado além dos limites da compreensão humana.',
+  },
+  {
+    numero: '04',
+    nome: 'Nyarlathotep',
+    descricao: 'O Caos Rastejante, mensageiro e manifestação dos deuses exteriores.',
   },
 ]
 </script>
 
 <template>
   <div class="site">
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="logo">H.P.L</div>
 
-      <div class="nav-links">
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+      <a href="#inicio" class="brand">
+        <span class="brand-symbol">☿</span>
+        <span>LOVECRAFT</span>
+      </a>
+
+      <nav class="nav-links">
         <a href="#inicio">Início</a>
         <a href="#autor">O Autor</a>
         <a href="#obras">Obras</a>
         <a href="#mythos">Mythos</a>
-      </div>
-    </nav>
+      </nav>
 
-    <!-- HERO -->
-    <main id="inicio">
-      <section class="hero">
+      <div class="nav-status">
+        <span></span>
+        THE UNKNOWN AWAITS
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+      <section id="inicio" class="hero">
+
+        <div class="stars"></div>
+
+        <div class="hero-grid"></div>
+
         <div class="hero-content">
-          <p class="eyebrow">O MESTRE DO HORROR CÓSMICO</p>
+
+          <div class="hero-label">
+            <span></span>
+            ARQUIVOS DO DESCONHECIDO
+          </div>
+
+          <p class="hero-kicker">
+            HOWARD PHILLIPS LOVECRAFT
+          </p>
 
           <h1>
-            H. P.
-            <span>LOVECRAFT</span>
+            O HORROR
+            <span>ALÉM DA RAZÃO</span>
           </h1>
 
           <p class="hero-description">
-            Nas profundezas do desconhecido existem horrores que a mente
-            humana jamais deveria compreender.
+            Nas profundezas do cosmos existem coisas que a humanidade
+            jamais deveria conhecer. Explore o universo de H. P. Lovecraft,
+            onde o desconhecido é muito mais assustador que a própria morte.
           </p>
 
-          <a href="#obras" class="hero-button">
-            EXPLORAR AS OBRAS
-          </a>
+          <div class="hero-actions">
+            <a href="#obras" class="primary-button">
+              EXPLORAR O MYTHOS
+              <span>↗</span>
+            </a>
+
+            <a href="#autor" class="secondary-button">
+              CONHECER O AUTOR
+            </a>
+          </div>
+
         </div>
 
-        <div class="hero-symbol">
-          <div class="eye">◉</div>
+        <!-- SÍMBOLO -->
+
+        <div class="cosmic-symbol">
+
+          <div class="symbol-orbit orbit-one"></div>
+          <div class="symbol-orbit orbit-two"></div>
+          <div class="symbol-orbit orbit-three"></div>
+
+          <div class="symbol-inner">
+
+            <div class="tentacle t1"></div>
+            <div class="tentacle t2"></div>
+            <div class="tentacle t3"></div>
+            <div class="tentacle t4"></div>
+            <div class="tentacle t5"></div>
+            <div class="tentacle t6"></div>
+
+            <div class="symbol-eye">
+              <div></div>
+            </div>
+
+          </div>
+
         </div>
+
+        <div class="hero-bottom">
+          <span>01 — INTRODUÇÃO</span>
+          <div></div>
+          <span>SCROLL TO DISCOVER</span>
+        </div>
+
       </section>
 
-      <!-- AUTOR -->
-      <section id="autor" class="section author">
-        <div class="section-title">
-          <span>01</span>
-          <h2>O Autor</h2>
+      <!-- ================= AUTOR ================= -->
+
+      <section id="autor" class="author section">
+
+        <div class="section-header">
+          <div>
+            <span class="section-number">01 / AUTOR</span>
+            <h2>
+              O homem que
+              <em>olhou para o abismo.</em>
+            </h2>
+          </div>
+
+          <span class="section-mark">HPL</span>
         </div>
 
-        <div class="author-content">
-          <div>
-            <p class="quote">
-              “O medo mais antigo e mais forte da humanidade é o medo do
-              desconhecido.”
-            </p>
+        <div class="author-layout">
+
+          <div class="author-card">
+
+            <div class="portrait-placeholder">
+              <span>H.P.L</span>
+              <small>1890 — 1937</small>
+            </div>
+
+            <div class="card-caption">
+              <span>HOWARD PHILLIPS LOVECRAFT</span>
+              <span>PROVIDENCE, RHODE ISLAND</span>
+            </div>
+
           </div>
 
           <div class="author-text">
-            <p>
-              Howard Phillips Lovecraft foi um escritor americano conhecido
-              principalmente por suas histórias de horror cósmico.
+
+            <p class="lead">
+              H. P. Lovecraft transformou o medo do desconhecido em uma
+              visão de mundo.
             </p>
 
             <p>
-              Suas obras exploram a insignificância da humanidade diante de
-              forças antigas e incompreensíveis que existem além da realidade
-              conhecida.
+              Nascido em Providence, Rhode Island, Lovecraft tornou-se uma
+              das figuras mais influentes da literatura de horror do século XX.
             </p>
 
             <p>
-              Seu universo literário deu origem ao chamado
-              <strong>Cthulhu Mythos</strong>, uma das maiores influências do
-              horror moderno.
+              Ao invés de monstros tradicionais, suas histórias apresentam
+              entidades antigas, dimensões incompreensíveis e civilizações
+              esquecidas.
             </p>
+
+            <p>
+              Em seu universo, o ser humano não é o centro da criação.
+              Somos apenas uma pequena presença diante de forças cósmicas
+              infinitamente maiores.
+            </p>
+
+            <div class="author-signature">
+              <span>H. P.</span>
+              <span>LOVECRAFT</span>
+            </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <!-- OBRAS -->
-      <section id="obras" class="section works">
-        <div class="section-title">
-          <span>02</span>
-          <h2>Obras</h2>
+      <!-- ================= FRASE ================= -->
+
+      <section class="quote-section">
+
+        <div class="quote-symbol">“</div>
+
+        <blockquote>
+          O medo mais antigo e mais forte da humanidade
+          <span>é o medo do desconhecido.</span>
+        </blockquote>
+
+        <div class="quote-author">
+          — H. P. LOVECRAFT
         </div>
 
-        <p class="section-description">
-          Alguns dos textos que ajudaram a definir o horror cósmico.
-        </p>
+      </section>
+
+      <!-- ================= OBRAS ================= -->
+
+      <section id="obras" class="works section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-number">02 / BIBLIOTECA</span>
+            <h2>
+              Obras do
+              <em>desconhecido.</em>
+            </h2>
+          </div>
+
+          <p class="section-intro">
+            Contos, novelas e pesadelos que ajudaram a definir
+            o horror cósmico.
+          </p>
+
+        </div>
 
         <div class="works-grid">
+
           <article
-            v-for="obra in obras"
+            v-for="(obra, index) in obras"
             :key="obra.titulo"
             class="work-card"
           >
-            <span class="work-year">{{ obra.ano }}</span>
 
-            <h3>{{ obra.titulo }}</h3>
+            <div class="work-top">
+              <span>0{{ index + 1 }}</span>
+              <span>{{ obra.ano }}</span>
+            </div>
 
-            <p>{{ obra.descricao }}</p>
+            <div class="work-content">
 
-            <button>LER SOBRE A OBRA →</button>
+              <span class="work-category">
+                {{ obra.categoria }}
+              </span>
+
+              <h3>{{ obra.titulo }}</h3>
+
+              <p>{{ obra.descricao }}</p>
+
+            </div>
+
+            <div class="work-bottom">
+              <span>ARQUIVO HPL</span>
+              <span class="arrow">↗</span>
+            </div>
+
           </article>
+
         </div>
+
       </section>
 
-      <!-- MYTHOS -->
-      <section id="mythos" class="section mythos">
-        <div class="section-title">
-          <span>03</span>
-          <h2>O Cthulhu Mythos</h2>
+      <!-- ================= MYTHOS ================= -->
+
+      <section id="mythos" class="mythos section">
+
+        <div class="mythos-heading">
+
+          <span class="section-number">03 / MITOLOGIA</span>
+
+          <h2>
+            <span>THE</span>
+            CTHULHU
+            <strong>MYTHOS</strong>
+          </h2>
+
+          <p>
+            Uma mitologia fragmentada de deuses antigos,
+            dimensões impossíveis e conhecimentos que deveriam
+            permanecer esquecidos.
+          </p>
+
         </div>
 
-        <div class="mythos-content">
-          <div class="mythos-text">
-            <p>
-              Deuses antigos, civilizações esquecidas e entidades que existem
-              além da compreensão humana.
-            </p>
+        <div class="entities">
 
-            <p>
-              O Mythos de Lovecraft apresenta um universo onde a humanidade
-              ocupa apenas uma pequena e insignificante posição.
-            </p>
-          </div>
+          <article
+            v-for="entidade in entidades"
+            :key="entidade.nome"
+            class="entity"
+          >
 
-          <div class="entities">
-            <div class="entity">
-              <span>01</span>
-              <h3>CTHULHU</h3>
-              <p>A entidade adormecida nas profundezas de R'lyeh.</p>
+            <span class="entity-number">
+              {{ entidade.numero }}
+            </span>
+
+            <div class="entity-symbol">
+              ◉
             </div>
 
-            <div class="entity">
-              <span>02</span>
-              <h3>AZATHOTH</h3>
-              <p>O caos primordial além da compreensão humana.</p>
-            </div>
+            <h3>{{ entidade.nome }}</h3>
 
-            <div class="entity">
-              <span>03</span>
-              <h3>YOG-SOTHOTH</h3>
-              <p>Aquele que é a chave e o guardião dos portais.</p>
-            </div>
+            <p>{{ entidade.descricao }}</p>
 
-            <div class="entity">
-              <span>04</span>
-              <h3>NYARLATHOTEP</h3>
-              <p>O Caos Rastejante, mensageiro dos deuses exteriores.</p>
-            </div>
-          </div>
+            <span class="entity-link">
+              CLASSIFIED FILE ↗
+            </span>
+
+          </article>
+
         </div>
+
       </section>
+
+      <!-- ================= FINAL ================= -->
+
+      <section class="final-section">
+
+        <div class="final-glow"></div>
+
+        <span class="final-label">
+          SOMETHING IS WAITING
+        </span>
+
+        <h2>
+          Não olhe
+          <span>para trás.</span>
+        </h2>
+
+        <p>
+          O conhecimento tem um preço.
+        </p>
+
+        <a href="#inicio" class="primary-button">
+          VOLTAR AO INÍCIO ↑
+        </a>
+
+      </section>
+
     </main>
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer>
-      <p>H.P. LOVECRAFT</p>
-      <span>THE UNKNOWN AWAITS</span>
+
+      <div class="footer-brand">
+        <span>H.P.L</span>
+        <small>ARCHIVES</small>
+      </div>
+
+      <div class="footer-center">
+        THE UNKNOWN AWAITS
+      </div>
+
+      <div class="footer-right">
+        <span>1890 — 1937</span>
+        <span>PROVIDENCE</span>
+      </div>
+
     </footer>
+
   </div>
 </template>
 
@@ -186,14 +417,25 @@ const obras = [
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --background: #080a09;
-  --background-light: #101512;
-  --green: #6f9279;
-  --green-light: #9bb6a1;
-  --text: #d8d5c9;
-  --text-muted: #858a83;
-  --border: #28332c;
+  --black: #050706;
+  --black-soft: #090d0b;
+  --black-card: #0b100d;
+
+  --green: #627f69;
+  --green-light: #9eb8a4;
+  --green-bright: #b5d0ba;
+
+  --cream: #d8d3c4;
+  --muted: #747b75;
+
+  --gold: #9a8c5b;
+
+  --border: rgba(145, 165, 148, 0.15);
+
+  --max-width: 1400px;
 }
+
+/* ================= RESET ================= */
 
 * {
   margin: 0;
@@ -203,12 +445,20 @@ const obras = [
 
 html {
   scroll-behavior: smooth;
+  background: var(--black);
 }
 
 body {
-  background: var(--background);
-  color: var(--text);
+  background: var(--black);
+  color: var(--cream);
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+body,
+button,
+a {
+  cursor: default;
 }
 
 a {
@@ -216,400 +466,1461 @@ a {
   text-decoration: none;
 }
 
-.site {
-  min-height: 100vh;
-  overflow: hidden;
+button {
+  font-family: inherit;
 }
 
-/* NAVBAR */
+::selection {
+  background: var(--green);
+  color: var(--black);
+}
+
+/* ================= SITE ================= */
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      ellipse at 50% -20%,
+      rgba(72, 105, 82, 0.15),
+      transparent 50%
+    ),
+    var(--black);
+}
+
+/* ================= NAVBAR ================= */
 
 .navbar {
-  height: 80px;
-  padding: 0 7%;
+  position: fixed;
+  z-index: 1000;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 76px;
+
+  padding: 0 clamp(24px, 5vw, 80px);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   border-bottom: 1px solid var(--border);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  background: rgba(8, 10, 9, 0.9);
-  backdrop-filter: blur(10px);
+
+  background: rgba(5, 7, 6, 0.75);
+
+  backdrop-filter: blur(18px);
 }
 
-.logo {
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
   font-family: 'Cinzel', serif;
-  font-size: 22px;
+
+  font-size: 14px;
   letter-spacing: 4px;
+
   color: var(--green-light);
+}
+
+.brand-symbol {
+  font-size: 24px;
+  color: var(--gold);
 }
 
 .nav-links {
   display: flex;
-  gap: 35px;
+  align-items: center;
+  gap: 38px;
 }
 
 .nav-links a {
-  font-size: 12px;
+  position: relative;
+
+  color: var(--muted);
+
+  font-size: 10px;
   letter-spacing: 2px;
-  color: var(--text-muted);
-  transition: 0.3s;
+  text-transform: uppercase;
+
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--green-light);
+
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--green-light);
+  color: var(--cream);
 }
 
-/* HERO */
+.nav-links a:hover::after {
+  width: 100%;
+}
 
-.hero {
-  min-height: 100vh;
-  padding: 150px 10% 80px;
+.nav-status {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position: relative;
-  background:
-    radial-gradient(circle at 75% 50%, #17241c 0%, transparent 35%),
-    var(--background);
+  gap: 9px;
+
+  color: #566158;
+
+  font-size: 8px;
+  letter-spacing: 2px;
 }
 
-.hero::before {
-  content: '';
+.nav-status span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow: 0 0 12px var(--green);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  max-width: var(--max-width);
+  margin: auto;
+
+  padding:
+    clamp(150px, 18vh, 200px)
+    clamp(24px, 7vw, 100px)
+    100px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.hero-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.08;
+
+  opacity: 0.07;
+
   background-image:
-    linear-gradient(var(--green) 1px, transparent 1px),
-    linear-gradient(90deg, var(--green) 1px, transparent 1px);
-  background-size: 70px 70px;
-  mask-image: linear-gradient(to right, transparent, black, transparent);
+    linear-gradient(
+      rgba(126, 155, 133, 0.4) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(126, 155, 133, 0.4) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black,
+      transparent 75%
+    );
+}
+
+.stars {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.7;
+
+  background-image:
+    radial-gradient(circle, #b4c6b8 1px, transparent 1px),
+    radial-gradient(circle, #82978a 1px, transparent 1px),
+    radial-gradient(circle, #d0d7d0 1px, transparent 1px);
+
+  background-size:
+    170px 170px,
+    230px 230px,
+    310px 310px;
+
+  background-position:
+    20px 40px,
+    100px 120px,
+    50px 200px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at 70% 40%,
+      black,
+      transparent 65%
+    );
+}
+
+.hero::after {
+  content: '';
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  right: -250px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(82, 122, 94, 0.2),
+      transparent 65%
+    );
+
+  filter: blur(20px);
 }
 
 .hero-content {
-  max-width: 700px;
   position: relative;
-  z-index: 2;
+  z-index: 5;
+
+  width: min(700px, 60%);
+
+  animation: heroEnter 1s ease forwards;
 }
 
-.eyebrow {
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 30px;
+
   color: var(--green);
+
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+.hero-label span {
+  width: 35px;
+  height: 1px;
+
+  background: var(--green);
+}
+
+.hero-kicker {
+  margin-bottom: 14px;
+
+  color: var(--muted);
+
   font-size: 11px;
-  letter-spacing: 5px;
-  margin-bottom: 25px;
+  letter-spacing: 6px;
 }
 
-h1 {
+.hero h1 {
   font-family: 'Cinzel', serif;
-  font-size: clamp(70px, 10vw, 150px);
-  line-height: 0.85;
+
+  font-size: clamp(55px, 7.5vw, 115px);
+
   font-weight: 500;
-  letter-spacing: -5px;
+
+  line-height: 0.9;
+
+  letter-spacing: -4px;
+
+  color: var(--cream);
 }
 
-h1 span {
+.hero h1 span {
   display: block;
+
   color: var(--green-light);
+
+  font-size: 0.72em;
+
+  margin-top: 12px;
+
+  letter-spacing: -2px;
 }
 
 .hero-description {
   max-width: 500px;
-  margin-top: 40px;
-  color: var(--text-muted);
-  line-height: 1.8;
-  font-size: 16px;
-}
 
-.hero-button {
-  display: inline-block;
-  margin-top: 35px;
-  padding: 16px 28px;
-  border: 1px solid var(--green);
-  color: var(--green-light);
-  font-size: 11px;
-  letter-spacing: 2px;
-  transition: 0.3s;
-}
+  margin-top: 38px;
 
-.hero-button:hover {
-  background: var(--green);
-  color: #080a09;
-}
+  color: var(--muted);
 
-/* SYMBOL */
+  font-size: 14px;
 
-.hero-symbol {
-  width: 350px;
-  height: 350px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-
-.hero-symbol::before,
-.hero-symbol::after {
-  content: '';
-  position: absolute;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-}
-
-.hero-symbol::before {
-  width: 260px;
-  height: 260px;
-}
-
-.hero-symbol::after {
-  width: 170px;
-  height: 170px;
-}
-
-.eye {
-  font-size: 90px;
-  color: var(--green);
-  text-shadow: 0 0 30px rgba(111, 146, 121, 0.5);
-}
-
-/* SECTIONS */
-
-.section {
-  padding: 120px 10%;
-  border-top: 1px solid var(--border);
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 60px;
-}
-
-.section-title span {
-  color: var(--green);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.section-title h2 {
-  font-family: 'Cinzel', serif;
-  font-size: 42px;
-  font-weight: 500;
-}
-
-/* AUTHOR */
-
-.author {
-  background: var(--background-light);
-}
-
-.author-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-}
-
-.quote {
-  font-family: 'Cinzel', serif;
-  font-size: 30px;
-  line-height: 1.5;
-  color: var(--green-light);
-}
-
-.author-text {
-  color: var(--text-muted);
   line-height: 1.9;
 }
 
-.author-text p {
-  margin-bottom: 20px;
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  margin-top: 40px;
 }
 
-.author-text strong {
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+
+  padding: 16px 20px;
+
+  border: 1px solid var(--green);
+
+  color: var(--green-light);
+
+  font-size: 9px;
+  letter-spacing: 2px;
+
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.3s;
+}
+
+.primary-button span {
+  font-size: 16px;
+}
+
+.primary-button:hover {
+  background: var(--green);
+  color: var(--black);
+
+  transform: translateY(-3px);
+}
+
+.secondary-button {
+  color: var(--muted);
+
+  font-size: 9px;
+  letter-spacing: 2px;
+
+  border-bottom: 1px solid transparent;
+
+  padding-bottom: 5px;
+
+  transition: 0.3s;
+}
+
+.secondary-button:hover {
+  color: var(--cream);
+  border-color: var(--green);
+}
+
+/* ================= COSMIC SYMBOL ================= */
+
+.cosmic-symbol {
+  position: absolute;
+
+  right: clamp(20px, 7vw, 100px);
+
+  top: 50%;
+
+  width: clamp(320px, 36vw, 560px);
+  aspect-ratio: 1;
+
+  transform: translateY(-50%);
+
+  display: grid;
+  place-items: center;
+
+  opacity: 0.85;
+}
+
+.symbol-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(126, 155, 133, 0.18);
+
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(25deg) scaleY(0.35);
+}
+
+.orbit-two {
+  width: 80%;
+  height: 80%;
+
+  transform: rotate(-45deg) scaleY(0.35);
+}
+
+.orbit-three {
+  width: 62%;
+  height: 62%;
+
+  transform: rotate(90deg) scaleY(0.35);
+}
+
+.symbol-inner {
+  position: relative;
+
+  width: 45%;
+  height: 45%;
+
+  border: 1px solid rgba(158, 184, 164, 0.4);
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow:
+    0 0 80px rgba(88, 128, 98, 0.12),
+    inset 0 0 50px rgba(88, 128, 98, 0.08);
+}
+
+.symbol-eye {
+  width: 100px;
+  height: 65px;
+
+  border: 2px solid var(--green-light);
+
+  border-radius: 70% 0 70% 0;
+
+  transform: rotate(45deg);
+
+  display: grid;
+  place-items: center;
+
+  box-shadow:
+    0 0 30px rgba(126, 165, 137, 0.18);
+}
+
+.symbol-eye div {
+  width: 17px;
+  height: 17px;
+
+  background: var(--green-light);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 25px rgba(171, 207, 181, 0.8);
+}
+
+.tentacle {
+  position: absolute;
+
+  width: 2px;
+  height: 90px;
+
+  background: linear-gradient(
+    transparent,
+    var(--green)
+  );
+
+  transform-origin: top;
+}
+
+.t1 {
+  transform: rotate(0deg) translateY(-75px);
+}
+
+.t2 {
+  transform: rotate(60deg) translateY(-75px);
+}
+
+.t3 {
+  transform: rotate(120deg) translateY(-75px);
+}
+
+.t4 {
+  transform: rotate(180deg) translateY(-75px);
+}
+
+.t5 {
+  transform: rotate(240deg) translateY(-75px);
+}
+
+.t6 {
+  transform: rotate(300deg) translateY(-75px);
+}
+
+.hero-bottom {
+  position: absolute;
+
+  bottom: 30px;
+  left: clamp(24px, 7vw, 100px);
+  right: clamp(24px, 7vw, 100px);
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  color: #4d554f;
+
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+
+.hero-bottom div {
+  height: 1px;
+  flex: 1;
+
+  background: var(--border);
+}
+
+/* ================= SECTION ================= */
+
+.section {
+  max-width: var(--max-width);
+
+  margin: auto;
+
+  padding:
+    clamp(90px, 12vw, 170px)
+    clamp(24px, 7vw, 100px);
+
+  border-top: 1px solid var(--border);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 80px;
+}
+
+.section-number {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--green);
+
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+.section-header h2 {
+  max-width: 650px;
+
+  font-family: 'Cinzel', serif;
+
+  font-size: clamp(38px, 5vw, 68px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+}
+
+.section-header h2 em {
+  display: block;
+
+  color: var(--green-light);
+
+  font-style: normal;
+}
+
+.section-mark {
+  color: rgba(158, 184, 164, 0.08);
+
+  font-family: 'Cinzel', serif;
+
+  font-size: 100px;
+  line-height: 0.7;
+}
+
+/* ================= AUTHOR ================= */
+
+.author {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(19, 28, 22, 0.35),
+      transparent
+    );
+}
+
+.author-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 0.9fr)
+    minmax(300px, 1fr);
+
+  gap: clamp(50px, 10vw, 150px);
+
+  align-items: center;
+}
+
+.author-card {
+  border: 1px solid var(--border);
+
+  background: var(--black-card);
+
+  box-shadow:
+    20px 20px 0 rgba(80, 105, 87, 0.03);
+}
+
+.portrait-placeholder {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: end;
+
+  padding: 35px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(113, 145, 120, 0.18),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      #111813,
+      #050706
+    );
+}
+
+.portrait-placeholder::before {
+  content: 'H';
+
+  position: absolute;
+
+  top: 35px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-family: 'Cinzel', serif;
+
+  font-size: 320px;
+
+  line-height: 1;
+
+  color: rgba(158, 184, 164, 0.025);
+}
+
+.portrait-placeholder::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 20px;
+
+  border: 1px solid rgba(158, 184, 164, 0.08);
+
+  pointer-events: none;
+}
+
+.portrait-placeholder span {
+  position: relative;
+  z-index: 2;
+
+  font-family: 'Cinzel', serif;
+
+  font-size: 55px;
+
+  color: var(--green-light);
+
+  letter-spacing: 5px;
+}
+
+.portrait-placeholder small {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 10px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.card-caption {
+  padding: 17px 20px;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--border);
+
+  color: #59615b;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+.author-text {
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 2;
+}
+
+.author-text .lead {
+  margin-bottom: 30px;
+
+  color: var(--green-light);
+
+  font-family: 'Cinzel', serif;
+
+  font-size: 25px;
+
+  line-height: 1.5;
+}
+
+.author-text p {
+  margin-bottom: 22px;
+}
+
+.author-signature {
+  margin-top: 45px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'Cinzel', serif;
+
+  font-size: 25px;
+
+  line-height: 0.9;
+
+  color: rgba(158, 184, 164, 0.35);
+}
+
+/* ================= QUOTE ================= */
+
+.quote-section {
+  position: relative;
+
+  padding:
+    clamp(110px, 15vw, 190px)
+    20px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(59, 91, 67, 0.16),
+      transparent 55%
+    );
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-symbol {
+  position: absolute;
+
+  top: 35px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-family: Georgia, serif;
+
+  font-size: 80px;
+
+  color: rgba(158, 184, 164, 0.08);
+}
+
+.quote-section blockquote {
+  max-width: 900px;
+
+  margin: auto;
+
+  font-family: 'Cinzel', serif;
+
+  font-size: clamp(25px, 4vw, 48px);
+
+  line-height: 1.4;
+
+  color: var(--cream);
+}
+
+.quote-section blockquote span {
+  display: block;
+
   color: var(--green-light);
 }
 
-/* WORKS */
+.quote-author {
+  margin-top: 35px;
 
-.section-description {
-  color: var(--text-muted);
-  margin-top: -35px;
-  margin-bottom: 50px;
+  color: var(--muted);
+
+  font-size: 9px;
+  letter-spacing: 4px;
+}
+
+/* ================= WORKS ================= */
+
+.works {
+  background: var(--black-soft);
+}
+
+.section-intro {
+  max-width: 280px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.8;
 }
 
 .works-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
 .work-card {
-  min-height: 350px;
-  padding: 35px;
-  border: 1px solid var(--border);
-  background: #0c100e;
-  transition: 0.4s;
+  position: relative;
+
+  min-height: 390px;
+
+  padding: 28px;
+
   display: flex;
   flex-direction: column;
+
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(22, 31, 25, 0.5),
+      rgba(6, 9, 7, 0.4)
+    );
+
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease;
+}
+
+.work-card::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(93, 130, 101, 0.14),
+      transparent 55%
+    );
+
+  transition: opacity 0.4s;
 }
 
 .work-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--green);
+  transform: translateY(-5px);
+
+  background: #0e1510;
 }
 
-.work-year {
-  color: var(--green);
-  font-size: 12px;
+.work-card:hover::before {
+  opacity: 1;
+}
+
+.work-top,
+.work-bottom,
+.work-content {
+  position: relative;
+  z-index: 2;
+}
+
+.work-top {
+  display: flex;
+  justify-content: space-between;
+
+  color: #59625b;
+
+  font-size: 9px;
   letter-spacing: 2px;
 }
 
+.work-content {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.work-category {
+  color: var(--green);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+}
+
 .work-card h3 {
+  max-width: 300px;
+
+  margin: 18px 0;
+
   font-family: 'Cinzel', serif;
-  font-size: 24px;
-  margin: 30px 0 20px;
+
+  font-size: 28px;
+
+  font-weight: 500;
+
+  line-height: 1.15;
+
   color: var(--green-light);
 }
 
 .work-card p {
-  color: var(--text-muted);
-  line-height: 1.7;
-  font-size: 14px;
-  flex: 1;
+  max-width: 330px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.8;
 }
 
-.work-card button {
-  margin-top: 25px;
-  padding: 12px 0;
-  background: transparent;
-  border: none;
+.work-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 18px;
+
   border-top: 1px solid var(--border);
-  color: var(--green);
-  text-align: left;
-  cursor: pointer;
+
+  color: #535b55;
+
+  font-size: 8px;
   letter-spacing: 2px;
-  font-size: 10px;
 }
 
-/* MYTHOS */
+.arrow {
+  font-size: 18px;
+
+  color: var(--green);
+
+  transition: transform 0.3s;
+}
+
+.work-card:hover .arrow {
+  transform: translate(4px, -4px);
+}
+
+/* ================= MYTHOS ================= */
 
 .mythos {
+  position: relative;
+
+  overflow: hidden;
+
   background:
-    radial-gradient(circle at 50% 50%, #132019, transparent 60%),
-    var(--background);
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(45, 75, 54, 0.2),
+      transparent 40%
+    );
 }
 
-.mythos-content {
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
-  gap: 100px;
+.mythos::before {
+  content: '☿';
+
+  position: absolute;
+
+  right: -100px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 600px;
+
+  color: rgba(158, 184, 164, 0.025);
 }
 
-.mythos-text {
-  color: var(--text-muted);
+.mythos-heading {
+  position: relative;
+  z-index: 2;
+
+  max-width: 750px;
+
+  margin-bottom: 80px;
+}
+
+.mythos-heading h2 {
+  font-family: 'Cinzel', serif;
+
+  font-size: clamp(55px, 8vw, 110px);
+
+  font-weight: 400;
+
+  line-height: 0.82;
+
+  letter-spacing: -5px;
+}
+
+.mythos-heading h2 span {
+  display: block;
+
+  font-size: 0.28em;
+
+  letter-spacing: 7px;
+
+  color: var(--muted);
+
+  margin-bottom: 15px;
+}
+
+.mythos-heading h2 strong {
+  display: block;
+
+  color: var(--green-light);
+
+  font-weight: 400;
+}
+
+.mythos-heading > p {
+  max-width: 500px;
+
+  margin-top: 40px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
   line-height: 1.9;
-  font-size: 16px;
-}
-
-.mythos-text p {
-  margin-bottom: 25px;
 }
 
 .entities {
+  position: relative;
+  z-index: 2;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
 .entity {
+  min-height: 370px;
+
   padding: 30px;
-  border: 1px solid var(--border);
+
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  transition:
+    background 0.4s,
+    transform 0.4s;
 }
 
-.entity span {
+.entity:hover {
+  background: rgba(89, 123, 97, 0.06);
+
+  transform: translateY(-5px);
+}
+
+.entity-number {
   color: var(--green);
-  font-size: 10px;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+.entity-symbol {
+  margin-top: 50px;
+
+  color: rgba(158, 184, 164, 0.2);
+
+  font-size: 45px;
 }
 
 .entity h3 {
+  margin-top: 25px;
+
   font-family: 'Cinzel', serif;
-  margin: 20px 0 10px;
+
+  font-size: 25px;
+
   color: var(--green-light);
 }
 
 .entity p {
-  color: var(--text-muted);
-  font-size: 13px;
-  line-height: 1.6;
+  margin-top: 15px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.8;
 }
 
-/* FOOTER */
+.entity-link {
+  display: block;
+
+  margin-top: 40px;
+
+  color: #4f5952;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+}
+
+/* ================= FINAL ================= */
+
+.final-section {
+  position: relative;
+
+  min-height: 70vh;
+
+  padding: 120px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  border-top: 1px solid var(--border);
+}
+
+.final-glow {
+  position: absolute;
+
+  width: 600px;
+  height: 600px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(75, 113, 84, 0.17),
+      transparent 65%
+    );
+
+  filter: blur(30px);
+}
+
+.final-label {
+  position: relative;
+
+  color: var(--green);
+
+  font-size: 9px;
+
+  letter-spacing: 6px;
+}
+
+.final-section h2 {
+  position: relative;
+
+  margin: 25px 0;
+
+  font-family: 'Cinzel', serif;
+
+  font-size: clamp(55px, 8vw, 110px);
+
+  font-weight: 400;
+
+  line-height: 0.9;
+}
+
+.final-section h2 span {
+  display: block;
+
+  color: var(--green-light);
+}
+
+.final-section p {
+  position: relative;
+
+  margin-bottom: 35px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+/* ================= FOOTER ================= */
 
 footer {
-  padding: 50px 10%;
-  border-top: 1px solid var(--border);
+  min-height: 120px;
+
+  padding: 30px clamp(24px, 7vw, 100px);
+
   display: flex;
   justify-content: space-between;
-  color: var(--text-muted);
-  font-size: 10px;
+  align-items: center;
+
+  border-top: 1px solid var(--border);
+
+  color: #4f5751;
+
+  font-size: 8px;
+
   letter-spacing: 3px;
 }
 
-footer p {
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+
   color: var(--green);
 }
 
-/* RESPONSIVO */
+.footer-brand span {
+  font-family: 'Cinzel', serif;
 
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 80px;
+  font-size: 18px;
+}
+
+.footer-brand small {
+  margin-top: 4px;
+
+  color: #4f5751;
+
+  font-size: 7px;
+}
+
+.footer-center {
+  color: #4f5751;
+}
+
+.footer-right {
+  display: flex;
+  gap: 25px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+  .nav-status {
+    display: none;
   }
 
-  .hero-symbol {
-    width: 250px;
-    height: 250px;
+  .cosmic-symbol {
+    right: -100px;
+
+    opacity: 0.45;
+  }
+
+  .hero-content {
+    width: 70%;
   }
 
   .works-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .author-content,
-  .mythos-content {
-    grid-template-columns: 1fr;
-    gap: 50px;
+  .entities {
+    grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+
   .navbar {
-    padding: 0 5%;
+    height: 68px;
   }
 
   .nav-links {
     display: none;
   }
 
-  .section {
-    padding: 80px 7%;
+  .hero {
+    min-height: 100svh;
+
+    padding-top: 130px;
   }
 
-  h1 {
-    font-size: 60px;
+  .hero-content {
+    width: 100%;
+  }
+
+  .cosmic-symbol {
+    width: 420px;
+
+    right: -180px;
+
+    opacity: 0.25;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .author-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    align-items: start;
+
+    flex-direction: column;
+
+    gap: 35px;
+  }
+
+  .section-mark {
+    display: none;
+  }
+
+  .works-grid {
+    grid-template-columns: 1fr;
   }
 
   .entities {
     grid-template-columns: 1fr;
   }
 
+  .entity {
+    min-height: 300px;
+  }
+
   footer {
     flex-direction: column;
-    gap: 15px;
+
+    gap: 25px;
+
+    align-items: flex-start;
   }
+
+}
+
+@media (max-width: 500px) {
+
+  .brand {
+    font-size: 11px;
+
+    letter-spacing: 3px;
+  }
+
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero h1 {
+    font-size: 53px;
+  }
+
+  .hero-kicker {
+    font-size: 8px;
+
+    letter-spacing: 4px;
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-actions {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .hero-bottom {
+    display: none;
+  }
+
+  .section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 40px;
+  }
+
+  .portrait-placeholder {
+    min-height: 400px;
+  }
+
+  .card-caption {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .quote-section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .mythos-heading h2 {
+    font-size: 55px;
+  }
+
+  .footer-center {
+    display: none;
+  }
+
 }
 </style>
