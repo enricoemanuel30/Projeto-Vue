@@ -63,30 +63,60 @@ const obras = [
   },
 ]
 
+// Cada Antigo recebe um pequeno glifo desenhado à mão em SVG,
+// coerente com a descrição do próprio mito — nenhuma arte externa,
+// tudo vetorial e herdando as cores do tema (claro/escuro).
 const entidades = [
   {
     numero: '01',
     nome: 'Cthulhu',
     descricao:
       'O Grande Antigo adormecido na cidade submersa de R’lyeh.',
+    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <circle cx="32" cy="35" r="15" />
+      <path d="M21 23 Q14 8 23 3 Q20 14 24 24" />
+      <path d="M43 23 Q50 8 41 3 Q44 14 40 24" />
+      <path d="M22 46 Q25 54 21 60" />
+      <path d="M28 49 Q29 57 26 62" />
+      <path d="M36 49 Q35 57 38 62" />
+      <path d="M42 46 Q39 54 43 60" />
+      <ellipse cx="32" cy="33" rx="2" ry="5.5" fill="currentColor" stroke="none" />
+    </svg>`,
   },
   {
     numero: '02',
     nome: 'Yog-Sothoth',
     descricao:
       'A entidade associada aos portais, ao espaço e ao próprio tempo.',
+    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="32" cy="32" r="21" />
+      <circle cx="32" cy="32" r="13" />
+      <circle cx="32" cy="32" r="5" />
+      <circle cx="19" cy="18" r="2.4" fill="currentColor" stroke="none" />
+      <circle cx="47" cy="16" r="1.8" fill="currentColor" stroke="none" />
+      <circle cx="49" cy="44" r="2.2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="46" r="1.8" fill="currentColor" stroke="none" />
+    </svg>`,
   },
   {
     numero: '03',
     nome: 'Azathoth',
     descricao:
       'O caos primordial, situado além dos limites da compreensão humana.',
+    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+      <path d="M32 5 L37 25 L55 12 L39 29 L59 33 L38 36 L48 53 L34 40 L26 58 L28 39 L9 43 L25 30 L7 19 L26 23 Z" />
+    </svg>`,
   },
   {
     numero: '04',
     nome: 'Nyarlathotep',
     descricao:
       'O Caos Rastejante, mensageiro e manifestação dos deuses exteriores.',
+    icon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path d="M32 7 L45 19 L45 39 Q45 52 32 57 Q19 52 19 39 L19 19 Z" />
+      <line x1="24" y1="27" x2="40" y2="27" />
+      <path d="M25 35 Q32 40 39 35" />
+    </svg>`,
   },
 ]
 </script>
@@ -188,9 +218,9 @@ const entidades = [
 
         </div>
 
-        <!-- SÍMBOLO -->
+        <!-- SÍMBOLO CÓSMICO -->
 
-        <div class="cosmic-symbol">
+        <div class="cosmic-symbol" role="img" aria-label="Ilustração de uma entidade tentacular cósmica adormecida">
 
           <div class="symbol-orbit orbit-one"></div>
           <div class="symbol-orbit orbit-two"></div>
@@ -198,16 +228,31 @@ const entidades = [
 
           <div class="symbol-inner">
 
-            <div class="tentacle t1"></div>
-            <div class="tentacle t2"></div>
-            <div class="tentacle t3"></div>
-            <div class="tentacle t4"></div>
-            <div class="tentacle t5"></div>
-            <div class="tentacle t6"></div>
+            <svg class="entity-svg" viewBox="0 0 300 260" fill="none" aria-hidden="true">
 
-            <div class="symbol-eye">
-              <div></div>
-            </div>
+              <!-- tentáculos externos -->
+              <g class="entity-tentacles" stroke-linecap="round">
+                <path d="M118 168 Q95 196 82 236" />
+                <path d="M132 182 Q116 212 108 250" />
+                <path d="M150 190 Q147 222 150 256" />
+                <path d="M168 182 Q176 212 184 250" />
+                <path d="M182 168 Q205 196 218 236" />
+                <path d="M100 150 Q65 168 34 186" />
+                <path d="M200 150 Q235 168 266 186" />
+              </g>
+
+              <!-- chifres -->
+              <path class="entity-line" d="M120 108 Q92 60 52 42 Q86 74 102 122" />
+              <path class="entity-line" d="M180 108 Q208 60 248 42 Q214 74 198 122" />
+
+              <!-- cabeça -->
+              <path class="entity-line" d="M104 150 Q150 96 196 150 Q202 194 150 210 Q98 194 104 150 Z" />
+
+              <!-- olho -->
+              <ellipse class="entity-eye" cx="150" cy="150" rx="15" ry="9.5" />
+              <circle class="entity-pupil" cx="150" cy="150" r="4.2" />
+
+            </svg>
 
           </div>
 
@@ -251,6 +296,18 @@ const entidades = [
           <div class="author-card">
 
             <div class="portrait-placeholder">
+
+              <svg class="portrait-art" viewBox="0 0 400 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+                <g class="portrait-waves" fill="none" stroke-linecap="round">
+                  <path d="M-10 432 Q40 415 90 432 T190 432 T290 432 T390 432" />
+                  <path d="M-10 452 Q40 436 90 452 T190 452 T290 452 T390 452" />
+                  <path d="M-10 472 Q40 456 90 472 T190 472 T290 472 T390 472" />
+                </g>
+                <g class="portrait-tentacles" fill="none" stroke-linecap="round">
+                  <path d="M232 434 Q248 344 220 262 Q202 322 214 384 Q186 330 198 268" />
+                  <path d="M186 434 Q164 352 196 280" />
+                </g>
+              </svg>
 
               <span>H.P.L</span>
 
@@ -324,6 +381,10 @@ const entidades = [
           O medo mais antigo e mais forte da humanidade
           <span>é o medo do desconhecido.</span>
         </blockquote>
+
+        <svg class="quote-divider" viewBox="0 0 220 16" aria-hidden="true">
+          <path d="M0 8 Q27 -2 55 8 T110 8 T165 8 T220 8" fill="none" stroke-linecap="round" />
+        </svg>
 
         <div class="quote-author">
           — H. P. LOVECRAFT
@@ -453,9 +514,10 @@ const entidades = [
               {{ entidade.numero }}
             </span>
 
-            <div class="entity-symbol">
-              ◉
-            </div>
+            <div
+              class="entity-symbol"
+              v-html="entidade.icon"
+            ></div>
 
             <h3>
               {{ entidade.nome }}
@@ -480,6 +542,14 @@ const entidades = [
       <section class="final-section">
 
         <div class="final-glow"></div>
+
+        <svg class="final-sign" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="none" />
+          <path
+            fill="none"
+            d="M100 12 L118 78 L182 60 L128 100 L182 140 L118 122 L100 188 L82 122 L18 140 L72 100 L18 60 L82 78 Z"
+          />
+        </svg>
 
         <span class="final-label">
           SOMETHING IS WAITING
@@ -595,6 +665,20 @@ button {
 ::selection {
   background: var(--green);
   color: var(--black);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /* ================= SITE ================= */
@@ -746,6 +830,11 @@ button {
     border-color 0.3s ease,
     color 0.3s ease,
     transform 0.3s ease;
+}
+
+.theme-toggle:focus-visible {
+  outline: 1px solid var(--green-light);
+  outline-offset: 3px;
 }
 
 .theme-toggle span:first-child {
@@ -1013,6 +1102,12 @@ button {
     transform 0.3s;
 }
 
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+  outline: 1px solid var(--green-light);
+  outline-offset: 4px;
+}
+
 .primary-button span {
   font-size: 16px;
 }
@@ -1098,8 +1193,8 @@ button {
 .symbol-inner {
   position: relative;
 
-  width: 45%;
-  height: 45%;
+  width: 62%;
+  height: 62%;
 
   border: 1px solid rgba(158, 184, 164, 0.4);
 
@@ -1113,33 +1208,45 @@ button {
     inset 0 0 50px rgba(88, 128, 98, 0.08);
 }
 
-.symbol-eye {
-  width: 100px;
-  height: 65px;
+.entity-svg {
+  width: 78%;
+  height: 78%;
 
-  border: 2px solid var(--green-light);
+  overflow: visible;
 
-  border-radius: 70% 0 70% 0;
-
-  transform: rotate(45deg);
-
-  display: grid;
-  place-items: center;
-
-  box-shadow:
-    0 0 30px rgba(126, 165, 137, 0.18);
+  animation: entityBreathe 7s ease-in-out infinite;
 }
 
-.symbol-eye div {
-  width: 17px;
-  height: 17px;
+@keyframes entityBreathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
 
-  background: var(--green-light);
+.entity-line,
+.entity-tentacles path {
+  stroke: var(--green-light);
+  stroke-width: 1.6;
+  fill: none;
+}
 
-  border-radius: 50%;
+.entity-tentacles path {
+  stroke: var(--green);
+  opacity: 0.8;
+}
 
-  box-shadow:
-    0 0 25px rgba(171, 207, 181, 0.8);
+.entity-eye {
+  fill: none;
+  stroke: var(--green-light);
+  stroke-width: 2;
+}
+
+.entity-pupil {
+  fill: var(--green-light);
+  filter: drop-shadow(0 0 6px rgba(171, 207, 181, 0.8));
 }
 
 .tentacle {
@@ -1155,30 +1262,6 @@ button {
     );
 
   transform-origin: top;
-}
-
-.t1 {
-  transform: rotate(0deg) translateY(-75px);
-}
-
-.t2 {
-  transform: rotate(60deg) translateY(-75px);
-}
-
-.t3 {
-  transform: rotate(120deg) translateY(-75px);
-}
-
-.t4 {
-  transform: rotate(180deg) translateY(-75px);
-}
-
-.t5 {
-  transform: rotate(240deg) translateY(-75px);
-}
-
-.t6 {
-  transform: rotate(300deg) translateY(-75px);
 }
 
 .hero-bottom {
@@ -1365,6 +1448,29 @@ button {
   pointer-events: none;
 }
 
+.portrait-art {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+.portrait-waves path {
+  stroke: var(--green-light);
+  stroke-width: 1;
+  opacity: 0.3;
+}
+
+.portrait-tentacles path {
+  stroke: var(--green-light);
+  stroke-width: 1.2;
+  opacity: 0.4;
+}
+
 .portrait-placeholder span {
   position: relative;
 
@@ -1505,8 +1611,19 @@ button {
   color: var(--green-light);
 }
 
+.quote-divider {
+  width: 140px;
+  height: 12px;
+
+  margin: 35px auto 0;
+}
+
+.quote-divider path {
+  stroke: var(--green);
+}
+
 .quote-author {
-  margin-top: 35px;
+  margin-top: 20px;
 
   color: var(--muted);
 
@@ -1813,11 +1930,26 @@ button {
 }
 
 .entity-symbol {
+  width: 46px;
+  height: 46px;
+
   margin-top: 50px;
 
-  color: rgba(158, 184, 164, 0.2);
+  color: rgba(158, 184, 164, 0.55);
 
-  font-size: 45px;
+  transition:
+    color 0.4s,
+    transform 0.4s;
+}
+
+.entity-symbol svg {
+  width: 100%;
+  height: 100%;
+}
+
+.entity:hover .entity-symbol {
+  color: var(--green-light);
+  transform: scale(1.08);
 }
 
 .entity h3 {
@@ -1891,6 +2023,32 @@ button {
     );
 
   filter: blur(30px);
+}
+
+.final-sign {
+  position: absolute;
+
+  width: clamp(320px, 40vw, 560px);
+  height: clamp(320px, 40vw, 560px);
+
+  opacity: 0.06;
+
+  animation: signSpin 90s linear infinite;
+}
+
+.final-sign circle,
+.final-sign path {
+  stroke: var(--green-light);
+  stroke-width: 1;
+}
+
+@keyframes signSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .final-label {
@@ -2063,15 +2221,8 @@ footer {
     inset 0 0 50px rgba(64, 91, 71, 0.05);
 }
 
-.light-mode .symbol-eye {
-  border-color: var(--green);
-}
-
-.light-mode .symbol-eye div {
-  background: var(--green);
-
-  box-shadow:
-    0 0 25px rgba(64, 91, 71, 0.4);
+.light-mode .entity-pupil {
+  filter: drop-shadow(0 0 6px rgba(48, 74, 56, 0.4));
 }
 
 .light-mode .author {
@@ -2180,6 +2331,10 @@ footer {
       rgba(75, 113, 84, 0.12),
       transparent 65%
     );
+}
+
+.light-mode .final-sign {
+  opacity: 0.1;
 }
 
 .light-mode footer {
