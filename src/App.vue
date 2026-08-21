@@ -4,6 +4,7 @@ const obras = [
     titulo: 'The Call of Cthulhu',
     ano: '1926',
     categoria: 'Conto',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Weirdtales-1928-02-thecallofcthulhu.jpg',
     descricao:
       'Um culto secreto, sonhos perturbadores e a descoberta de uma entidade ancestral adormecida nas profundezas do Pacífico.',
   },
@@ -11,6 +12,7 @@ const obras = [
     titulo: 'The Shadow over Innsmouth',
     ano: '1936',
     categoria: 'Conto',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Shadow_over_Innsmouth.png',
     descricao:
       'Uma cidade decadente, habitantes estranhos e uma linhagem que esconde uma ligação aterradora com o oceano.',
   },
@@ -18,6 +20,7 @@ const obras = [
     titulo: 'At the Mountains of Madness',
     ano: '1936',
     categoria: 'Novela',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/At_the_Mountains_of_Madness.jpg',
     descricao:
       'Uma expedição à Antártida encontra vestígios de uma civilização alienígena muito mais antiga que a humanidade.',
   },
@@ -25,6 +28,7 @@ const obras = [
     titulo: 'The Colour Out of Space',
     ano: '1927',
     categoria: 'Conto',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Amazingstories-1927-09-thecolouroutofspace.jpg',
     descricao:
       'Uma estranha presença caída do céu começa a corromper a terra, os animais e tudo aquilo que vive ao seu redor.',
   },
@@ -32,6 +36,7 @@ const obras = [
     titulo: 'The Dunwich Horror',
     ano: '1928',
     categoria: 'Conto',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Dunwich_Horror.jpg',
     descricao:
       'Um segredo familiar, rituais proibidos e uma criatura que não deveria existir entre os homens.',
   },
@@ -39,6 +44,7 @@ const obras = [
     titulo: 'The Shadow Out of Time',
     ano: '1936',
     categoria: 'Novela',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shadow_Out_of_Time_Cover.jpg',
     descricao:
       'Memórias impossíveis e uma consciência humana projetada através do tempo revelam horrores inimagináveis.',
   },
@@ -48,21 +54,25 @@ const entidades = [
   {
     numero: '01',
     nome: 'Cthulhu',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hugh_Rankin_-_The_Call_of_Cthulhu.jpg',
     descricao: 'O Grande Antigo adormecido na cidade submersa de R’lyeh.',
   },
   {
     numero: '02',
     nome: 'Yog-Sothoth',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Crab_Nebula.jpg',
     descricao: 'A entidade associada aos portais, ao espaço e ao próprio tempo.',
   },
   {
     numero: '03',
     nome: 'Azathoth',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/30_Doradus,_Tarantula_Nebula.jpg',
     descricao: 'O caos primordial, situado além dos limites da compreensão humana.',
   },
   {
     numero: '04',
     nome: 'Nyarlathotep',
+    imagem: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ant_Nebula.jpg',
     descricao: 'O Caos Rastejante, mensageiro e manifestação dos deuses exteriores.',
   },
 ]
@@ -177,6 +187,7 @@ const entidades = [
         <div class="section-header">
           <div>
             <span class="section-number">01 / AUTOR</span>
+
             <h2>
               O homem que
               <em>olhou para o abismo.</em>
@@ -191,8 +202,11 @@ const entidades = [
           <div class="author-card">
 
             <div class="portrait-placeholder">
-              <span>H.P.L</span>
-              <small>1890 — 1937</small>
+              <img
+                class="portrait-photo"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/H._P._Lovecraft,_June_1934.jpg"
+                alt="Retrato de H. P. Lovecraft, 1934"
+              />
             </div>
 
             <div class="card-caption">
@@ -262,6 +276,7 @@ const entidades = [
 
           <div>
             <span class="section-number">02 / BIBLIOTECA</span>
+
             <h2>
               Obras do
               <em>desconhecido.</em>
@@ -283,10 +298,29 @@ const entidades = [
             class="work-card"
           >
 
-            <div class="work-top">
-              <span>0{{ index + 1 }}</span>
-              <span>{{ obra.ano }}</span>
+            <!-- IMAGEM DA OBRA -->
+
+            <div class="work-image">
+
+              <img
+                :src="obra.imagem"
+                :alt="`Capa original de ${obra.titulo}`"
+                loading="lazy"
+              />
+
+              <div class="work-image-overlay"></div>
+
+              <span class="work-number">
+                0{{ index + 1 }}
+              </span>
+
+              <span class="work-year">
+                {{ obra.ano }}
+              </span>
+
             </div>
+
+            <!-- CONTEÚDO -->
 
             <div class="work-content">
 
@@ -294,15 +328,24 @@ const entidades = [
                 {{ obra.categoria }}
               </span>
 
-              <h3>{{ obra.titulo }}</h3>
+              <h3>
+                {{ obra.titulo }}
+              </h3>
 
-              <p>{{ obra.descricao }}</p>
+              <p>
+                {{ obra.descricao }}
+              </p>
 
             </div>
 
+            <!-- RODAPÉ -->
+
             <div class="work-bottom">
               <span>ARQUIVO HPL</span>
-              <span class="arrow">↗</span>
+
+              <span class="arrow">
+                ↗
+              </span>
             </div>
 
           </article>
@@ -317,7 +360,9 @@ const entidades = [
 
         <div class="mythos-heading">
 
-          <span class="section-number">03 / MITOLOGIA</span>
+          <span class="section-number">
+            03 / MITOLOGIA
+          </span>
 
           <h2>
             <span>THE</span>
@@ -346,12 +391,20 @@ const entidades = [
             </span>
 
             <div class="entity-symbol">
-              ◉
+              <img
+                :src="entidade.imagem"
+                :alt="entidade.nome"
+                loading="lazy"
+              />
             </div>
 
-            <h3>{{ entidade.nome }}</h3>
+            <h3>
+              {{ entidade.nome }}
+            </h3>
 
-            <p>{{ entidade.descricao }}</p>
+            <p>
+              {{ entidade.descricao }}
+            </p>
 
             <span class="entity-link">
               CLASSIFIED FILE ↗
@@ -409,6 +462,11 @@ const entidades = [
       </div>
 
     </footer>
+
+    <div class="image-credit">
+      Imagens: capas originais de Weird Tales / Astounding Stories / Amazing Stories, retrato de H. P. Lovecraft
+      e imagens astronômicas NASA/ESA — domínio público, via Wikimedia Commons.
+    </div>
 
   </div>
 </template>
@@ -480,6 +538,7 @@ button {
 .site {
   width: 100%;
   min-height: 100vh;
+
   background:
     radial-gradient(
       ellipse at 50% -20%,
@@ -646,7 +705,6 @@ button {
 
 .stars {
   position: absolute;
-
   inset: 0;
 
   opacity: 0.7;
@@ -1099,13 +1157,6 @@ button {
 .portrait-placeholder {
   min-height: 500px;
 
-  display: flex;
-  flex-direction: column;
-
-  justify-content: end;
-
-  padding: 35px;
-
   position: relative;
 
   overflow: hidden;
@@ -1123,25 +1174,6 @@ button {
     );
 }
 
-.portrait-placeholder::before {
-  content: 'H';
-
-  position: absolute;
-
-  top: 35px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  font-family: 'Cinzel', serif;
-
-  font-size: 320px;
-
-  line-height: 1;
-
-  color: rgba(158, 184, 164, 0.025);
-}
-
 .portrait-placeholder::after {
   content: '';
 
@@ -1152,31 +1184,29 @@ button {
   border: 1px solid rgba(158, 184, 164, 0.08);
 
   pointer-events: none;
+
+  z-index: 2;
 }
 
-.portrait-placeholder span {
+.portrait-photo {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 
-  font-family: 'Cinzel', serif;
+  width: 100%;
+  height: 100%;
 
-  font-size: 55px;
+  min-height: 500px;
 
-  color: var(--green-light);
+  display: block;
 
-  letter-spacing: 5px;
-}
+  object-fit: cover;
+  object-position: top center;
 
-.portrait-placeholder small {
-  position: relative;
-  z-index: 2;
-
-  margin-top: 10px;
-
-  color: var(--muted);
-
-  font-size: 9px;
-  letter-spacing: 3px;
+  filter:
+    grayscale(85%)
+    brightness(0.8)
+    contrast(1.12)
+    sepia(8%);
 }
 
 .card-caption {
@@ -1324,80 +1354,141 @@ button {
   border-left: 1px solid var(--border);
 }
 
+/* CARD */
+
 .work-card {
   position: relative;
 
-  min-height: 390px;
-
-  padding: 28px;
+  min-height: 560px;
 
   display: flex;
   flex-direction: column;
 
+  overflow: hidden;
+
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(22, 31, 25, 0.5),
-      rgba(6, 9, 7, 0.4)
-    );
+  background: #080c09;
 
   transition:
     transform 0.4s ease,
     background 0.4s ease;
 }
 
-.work-card::before {
+/* IMAGEM */
+
+.work-image {
+  position: relative;
+
+  height: 260px;
+
+  overflow: hidden;
+
+  background: #050706;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(75%)
+    brightness(0.55)
+    contrast(1.15);
+
+  transform: scale(1.02);
+
+  transition:
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s ease;
+}
+
+.work-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 7, 6, 0.05),
+      rgba(5, 7, 6, 0.35) 45%,
+      rgba(5, 7, 6, 0.95)
+    );
+
+  z-index: 1;
+}
+
+.work-image::after {
   content: '';
 
   position: absolute;
 
   inset: 0;
 
-  opacity: 0;
-
   background:
     radial-gradient(
-      circle at 50% 30%,
-      rgba(93, 130, 101, 0.14),
-      transparent 55%
+      circle at center,
+      rgba(104, 145, 113, 0.25),
+      transparent 65%
     );
 
-  transition: opacity 0.4s;
-}
+  opacity: 0;
 
-.work-card:hover {
-  transform: translateY(-5px);
-
-  background: #0e1510;
-}
-
-.work-card:hover::before {
-  opacity: 1;
-}
-
-.work-top,
-.work-bottom,
-.work-content {
-  position: relative;
   z-index: 2;
+
+  transition: opacity 0.5s ease;
 }
 
-.work-top {
-  display: flex;
-  justify-content: space-between;
+/* NUMERO */
 
-  color: #59625b;
+.work-number {
+  position: absolute;
+
+  top: 20px;
+  left: 22px;
+
+  z-index: 3;
+
+  color: var(--green-light);
 
   font-size: 9px;
+
+  letter-spacing: 3px;
+}
+
+/* ANO */
+
+.work-year {
+  position: absolute;
+
+  top: 20px;
+  right: 22px;
+
+  z-index: 3;
+
+  color: rgba(216, 211, 196, 0.65);
+
+  font-size: 9px;
+
   letter-spacing: 2px;
 }
 
+/* CONTEÚDO */
+
 .work-content {
-  margin-top: auto;
-  margin-bottom: auto;
+  position: relative;
+
+  z-index: 3;
+
+  flex: 1;
+
+  padding: 30px;
 }
 
 .work-category {
@@ -1409,19 +1500,21 @@ button {
 }
 
 .work-card h3 {
-  max-width: 300px;
+  max-width: 320px;
 
-  margin: 18px 0;
+  margin: 15px 0;
+
+  color: var(--green-light);
 
   font-family: 'Cinzel', serif;
 
-  font-size: 28px;
+  font-size: 27px;
 
   font-weight: 500;
 
   line-height: 1.15;
 
-  color: var(--green-light);
+  transition: color 0.3s ease;
 }
 
 .work-card p {
@@ -1434,18 +1527,29 @@ button {
   line-height: 1.8;
 }
 
-.work-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* RODAPÉ */
 
-  padding-top: 18px;
+.work-bottom {
+  position: relative;
+
+  z-index: 3;
+
+  margin: 0 30px;
+
+  padding: 18px 0;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
 
   border-top: 1px solid var(--border);
 
   color: #535b55;
 
   font-size: 8px;
+
   letter-spacing: 2px;
 }
 
@@ -1454,11 +1558,43 @@ button {
 
   color: var(--green);
 
-  transition: transform 0.3s;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+/* HOVER */
+
+.work-card:hover {
+  transform: translateY(-8px);
+
+  background: #0c120e;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.work-card:hover .work-image img {
+  transform: scale(1.1);
+
+  filter:
+    grayscale(20%)
+    brightness(0.7)
+    contrast(1.1);
+}
+
+.work-card:hover .work-image::after {
+  opacity: 1;
+}
+
+.work-card:hover h3 {
+  color: var(--cream);
 }
 
 .work-card:hover .arrow {
-  transform: translate(4px, -4px);
+  color: var(--green-light);
+
+  transform: translate(5px, -5px);
 }
 
 /* ================= MYTHOS ================= */
@@ -1469,11 +1605,13 @@ button {
   overflow: hidden;
 
   background:
-    radial-gradient(
-      ellipse at 80% 20%,
-      rgba(45, 75, 54, 0.2),
-      transparent 40%
-    );
+    linear-gradient(
+      to bottom,
+      rgba(5, 7, 6, 0.94),
+      rgba(5, 7, 6, 0.8),
+      rgba(5, 7, 6, 0.96)
+    ),
+    url('https://commons.wikimedia.org/wiki/Special:FilePath/Heart_and_Soul_nebulae.jpg') center/cover no-repeat fixed;
 }
 
 .mythos::before {
@@ -1489,10 +1627,13 @@ button {
   font-size: 600px;
 
   color: rgba(158, 184, 164, 0.025);
+
+  pointer-events: none;
 }
 
 .mythos-heading {
   position: relative;
+
   z-index: 2;
 
   max-width: 750px;
@@ -1546,6 +1687,7 @@ button {
 
 .entities {
   position: relative;
+
   z-index: 2;
 
   display: grid;
@@ -1564,13 +1706,17 @@ button {
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 
+  background: rgba(5, 7, 6, 0.65);
+
+  backdrop-filter: blur(8px);
+
   transition:
     background 0.4s,
     transform 0.4s;
 }
 
 .entity:hover {
-  background: rgba(89, 123, 97, 0.06);
+  background: rgba(15, 25, 18, 0.85);
 
   transform: translateY(-5px);
 }
@@ -1584,11 +1730,42 @@ button {
 }
 
 .entity-symbol {
-  margin-top: 50px;
+  margin-top: 25px;
 
-  color: rgba(158, 184, 164, 0.2);
+  width: 100%;
 
-  font-size: 45px;
+  height: 130px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  position: relative;
+}
+
+.entity-symbol img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(35%)
+    brightness(0.75)
+    contrast(1.1)
+    saturate(1.2);
+
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.entity:hover .entity-symbol img {
+  transform: scale(1.08);
+
+  filter:
+    grayscale(10%)
+    brightness(0.9)
+    contrast(1.05)
+    saturate(1.3);
 }
 
 .entity h3 {
@@ -1633,9 +1810,11 @@ button {
   padding: 120px 20px;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
@@ -1711,7 +1890,9 @@ footer {
   padding: 30px clamp(24px, 7vw, 100px);
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   border-top: 1px solid var(--border);
@@ -1725,6 +1906,7 @@ footer {
 
 .footer-brand {
   display: flex;
+
   flex-direction: column;
 
   color: var(--green);
@@ -1750,7 +1932,24 @@ footer {
 
 .footer-right {
   display: flex;
+
   gap: 25px;
+}
+
+/* ================= CRÉDITOS DE IMAGEM ================= */
+
+.image-credit {
+  padding: 18px clamp(24px, 7vw, 100px) 30px;
+
+  color: #3d443e;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  line-height: 1.7;
+
+  text-align: center;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -1833,6 +2032,14 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .work-card {
+    min-height: 520px;
+  }
+
+  .work-image {
+    height: 300px;
+  }
+
   .entities {
     grid-template-columns: 1fr;
   }
@@ -1861,6 +2068,7 @@ footer {
 
   .hero {
     padding-left: 20px;
+
     padding-right: 20px;
   }
 
@@ -1892,6 +2100,7 @@ footer {
 
   .section {
     padding-left: 20px;
+
     padding-right: 20px;
   }
 
@@ -1903,6 +2112,10 @@ footer {
     min-height: 400px;
   }
 
+  .portrait-photo {
+    min-height: 400px;
+  }
+
   .card-caption {
     flex-direction: column;
 
@@ -1911,6 +2124,7 @@ footer {
 
   .quote-section {
     padding-left: 25px;
+
     padding-right: 25px;
   }
 
