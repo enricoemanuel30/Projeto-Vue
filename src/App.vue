@@ -1,4 +1,23 @@
 <script setup lang="ts">
+import { ref, onMounted, watch } from 'vue'
+
+const isLightMode = ref(false)
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('lovecraft-theme')
+
+  if (savedTheme === 'light') {
+    isLightMode.value = true
+  }
+})
+
+watch(isLightMode, (value) => {
+  localStorage.setItem(
+    'lovecraft-theme',
+    value ? 'light' : 'dark'
+  )
+})
+
 const obras = [
   {
     titulo: 'The Call of Cthulhu',
@@ -48,32 +67,40 @@ const entidades = [
   {
     numero: '01',
     nome: 'Cthulhu',
-    descricao: 'O Grande Antigo adormecido na cidade submersa de R’lyeh.',
+    descricao:
+      'O Grande Antigo adormecido na cidade submersa de R’lyeh.',
   },
   {
     numero: '02',
     nome: 'Yog-Sothoth',
-    descricao: 'A entidade associada aos portais, ao espaço e ao próprio tempo.',
+    descricao:
+      'A entidade associada aos portais, ao espaço e ao próprio tempo.',
   },
   {
     numero: '03',
     nome: 'Azathoth',
-    descricao: 'O caos primordial, situado além dos limites da compreensão humana.',
+    descricao:
+      'O caos primordial, situado além dos limites da compreensão humana.',
   },
   {
     numero: '04',
     nome: 'Nyarlathotep',
-    descricao: 'O Caos Rastejante, mensageiro e manifestação dos deuses exteriores.',
+    descricao:
+      'O Caos Rastejante, mensageiro e manifestação dos deuses exteriores.',
   },
 ]
 </script>
 
 <template>
-  <div class="site">
+  <div
+    class="site"
+    :class="{ 'light-mode': isLightMode }"
+  >
 
     <!-- ================= NAVBAR ================= -->
 
     <header class="navbar">
+
       <a href="#inicio" class="brand">
         <span class="brand-symbol">☿</span>
         <span>LOVECRAFT</span>
@@ -86,10 +113,32 @@ const entidades = [
         <a href="#mythos">Mythos</a>
       </nav>
 
-      <div class="nav-status">
-        <span></span>
-        THE UNKNOWN AWAITS
+      <div class="nav-actions">
+
+        <button
+          class="theme-toggle"
+          @click="isLightMode = !isLightMode"
+          :aria-label="
+            isLightMode
+              ? 'Ativar modo escuro'
+              : 'Ativar modo claro'
+          "
+        >
+          <span v-if="!isLightMode">☀</span>
+          <span v-else>☾</span>
+
+          <span class="theme-text">
+            {{ isLightMode ? 'MODO ESCURO' : 'MODO CLARO' }}
+          </span>
+        </button>
+
+        <div class="nav-status">
+          <span></span>
+          THE UNKNOWN AWAITS
+        </div>
+
       </div>
+
     </header>
 
     <!-- ================= HERO ================= -->
@@ -125,6 +174,7 @@ const entidades = [
           </p>
 
           <div class="hero-actions">
+
             <a href="#obras" class="primary-button">
               EXPLORAR O MYTHOS
               <span>↗</span>
@@ -133,6 +183,7 @@ const entidades = [
             <a href="#autor" class="secondary-button">
               CONHECER O AUTOR
             </a>
+
           </div>
 
         </div>
@@ -175,15 +226,24 @@ const entidades = [
       <section id="autor" class="author section">
 
         <div class="section-header">
+
           <div>
-            <span class="section-number">01 / AUTOR</span>
+
+            <span class="section-number">
+              01 / AUTOR
+            </span>
+
             <h2>
               O homem que
               <em>olhou para o abismo.</em>
             </h2>
+
           </div>
 
-          <span class="section-mark">HPL</span>
+          <span class="section-mark">
+            HPL
+          </span>
+
         </div>
 
         <div class="author-layout">
@@ -191,13 +251,25 @@ const entidades = [
           <div class="author-card">
 
             <div class="portrait-placeholder">
+
               <span>H.P.L</span>
-              <small>1890 — 1937</small>
+
+              <small>
+                1890 — 1937
+              </small>
+
             </div>
 
             <div class="card-caption">
-              <span>HOWARD PHILLIPS LOVECRAFT</span>
-              <span>PROVIDENCE, RHODE ISLAND</span>
+
+              <span>
+                HOWARD PHILLIPS LOVECRAFT
+              </span>
+
+              <span>
+                PROVIDENCE, RHODE ISLAND
+              </span>
+
             </div>
 
           </div>
@@ -205,13 +277,14 @@ const entidades = [
           <div class="author-text">
 
             <p class="lead">
-              H. P. Lovecraft transformou o medo do desconhecido em uma
-              visão de mundo.
+              H. P. Lovecraft transformou o medo do desconhecido
+              em uma visão de mundo.
             </p>
 
             <p>
-              Nascido em Providence, Rhode Island, Lovecraft tornou-se uma
-              das figuras mais influentes da literatura de horror do século XX.
+              Nascido em Providence, Rhode Island, Lovecraft tornou-se
+              uma das figuras mais influentes da literatura de horror
+              do século XX.
             </p>
 
             <p>
@@ -227,8 +300,10 @@ const entidades = [
             </p>
 
             <div class="author-signature">
+
               <span>H. P.</span>
               <span>LOVECRAFT</span>
+
             </div>
 
           </div>
@@ -241,7 +316,9 @@ const entidades = [
 
       <section class="quote-section">
 
-        <div class="quote-symbol">“</div>
+        <div class="quote-symbol">
+          “
+        </div>
 
         <blockquote>
           O medo mais antigo e mais forte da humanidade
@@ -261,11 +338,16 @@ const entidades = [
         <div class="section-header">
 
           <div>
-            <span class="section-number">02 / BIBLIOTECA</span>
+
+            <span class="section-number">
+              02 / BIBLIOTECA
+            </span>
+
             <h2>
               Obras do
               <em>desconhecido.</em>
             </h2>
+
           </div>
 
           <p class="section-intro">
@@ -284,8 +366,15 @@ const entidades = [
           >
 
             <div class="work-top">
-              <span>0{{ index + 1 }}</span>
-              <span>{{ obra.ano }}</span>
+
+              <span>
+                0{{ index + 1 }}
+              </span>
+
+              <span>
+                {{ obra.ano }}
+              </span>
+
             </div>
 
             <div class="work-content">
@@ -294,15 +383,26 @@ const entidades = [
                 {{ obra.categoria }}
               </span>
 
-              <h3>{{ obra.titulo }}</h3>
+              <h3>
+                {{ obra.titulo }}
+              </h3>
 
-              <p>{{ obra.descricao }}</p>
+              <p>
+                {{ obra.descricao }}
+              </p>
 
             </div>
 
             <div class="work-bottom">
-              <span>ARQUIVO HPL</span>
-              <span class="arrow">↗</span>
+
+              <span>
+                ARQUIVO HPL
+              </span>
+
+              <span class="arrow">
+                ↗
+              </span>
+
             </div>
 
           </article>
@@ -317,12 +417,20 @@ const entidades = [
 
         <div class="mythos-heading">
 
-          <span class="section-number">03 / MITOLOGIA</span>
+          <span class="section-number">
+            03 / MITOLOGIA
+          </span>
 
           <h2>
+
             <span>THE</span>
+
             CTHULHU
-            <strong>MYTHOS</strong>
+
+            <strong>
+              MYTHOS
+            </strong>
+
           </h2>
 
           <p>
@@ -349,9 +457,13 @@ const entidades = [
               ◉
             </div>
 
-            <h3>{{ entidade.nome }}</h3>
+            <h3>
+              {{ entidade.nome }}
+            </h3>
 
-            <p>{{ entidade.descricao }}</p>
+            <p>
+              {{ entidade.descricao }}
+            </p>
 
             <span class="entity-link">
               CLASSIFIED FILE ↗
@@ -395,8 +507,15 @@ const entidades = [
     <footer>
 
       <div class="footer-brand">
-        <span>H.P.L</span>
-        <small>ARCHIVES</small>
+
+        <span>
+          H.P.L
+        </span>
+
+        <small>
+          ARCHIVES
+        </small>
+
       </div>
 
       <div class="footer-center">
@@ -404,8 +523,15 @@ const entidades = [
       </div>
 
       <div class="footer-right">
-        <span>1890 — 1937</span>
-        <span>PROVIDENCE</span>
+
+        <span>
+          1890 — 1937
+        </span>
+
+        <span>
+          PROVIDENCE
+        </span>
+
       </div>
 
     </footer>
@@ -415,6 +541,8 @@ const entidades = [
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ================= VARIÁVEIS ================= */
 
 :root {
   --black: #050706;
@@ -455,12 +583,6 @@ body {
   overflow-x: hidden;
 }
 
-body,
-button,
-a {
-  cursor: default;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -480,6 +602,7 @@ button {
 .site {
   width: 100%;
   min-height: 100vh;
+
   background:
     radial-gradient(
       ellipse at 50% -20%,
@@ -487,12 +610,17 @@ button {
       transparent 50%
     ),
     var(--black);
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
 }
 
 /* ================= NAVBAR ================= */
 
 .navbar {
   position: fixed;
+
   z-index: 1000;
 
   top: 0;
@@ -512,16 +640,22 @@ button {
   background: rgba(5, 7, 6, 0.75);
 
   backdrop-filter: blur(18px);
+
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease;
 }
 
 .brand {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   font-family: 'Cinzel', serif;
 
   font-size: 14px;
+
   letter-spacing: 4px;
 
   color: var(--green-light);
@@ -535,6 +669,7 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
+
   gap: 38px;
 }
 
@@ -544,7 +679,9 @@ button {
   color: var(--muted);
 
   font-size: 10px;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
 
   transition: color 0.3s ease;
@@ -574,14 +711,67 @@ button {
   width: 100%;
 }
 
+/* ================= NAV ACTIONS ================= */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 12px;
+
+  background: transparent;
+
+  border: 1px solid var(--border);
+
+  color: var(--green-light);
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.theme-toggle span:first-child {
+  font-size: 15px;
+}
+
+.theme-toggle:hover {
+  background: var(--green);
+
+  border-color: var(--green);
+
+  color: var(--black);
+
+  transform: translateY(-2px);
+}
+
 .nav-status {
   display: flex;
   align-items: center;
+
   gap: 9px;
 
   color: #566158;
 
   font-size: 8px;
+
   letter-spacing: 2px;
 }
 
@@ -593,7 +783,8 @@ button {
 
   background: var(--green);
 
-  box-shadow: 0 0 12px var(--green);
+  box-shadow:
+    0 0 12px var(--green);
 }
 
 /* ================= HERO ================= */
@@ -604,6 +795,7 @@ button {
   min-height: 100svh;
 
   max-width: var(--max-width);
+
   margin: auto;
 
   padding:
@@ -619,6 +811,7 @@ button {
 
 .hero-grid {
   position: absolute;
+
   inset: 0;
 
   opacity: 0.07;
@@ -699,6 +892,7 @@ button {
 
 .hero-content {
   position: relative;
+
   z-index: 5;
 
   width: min(700px, 60%);
@@ -721,6 +915,7 @@ button {
 .hero-label {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   margin-bottom: 30px;
@@ -728,6 +923,7 @@ button {
   color: var(--green);
 
   font-size: 9px;
+
   letter-spacing: 4px;
 }
 
@@ -744,6 +940,7 @@ button {
   color: var(--muted);
 
   font-size: 11px;
+
   letter-spacing: 6px;
 }
 
@@ -788,6 +985,7 @@ button {
 .hero-actions {
   display: flex;
   align-items: center;
+
   gap: 24px;
 
   margin-top: 40px;
@@ -796,6 +994,7 @@ button {
 .primary-button {
   display: inline-flex;
   align-items: center;
+
   gap: 22px;
 
   padding: 16px 20px;
@@ -805,6 +1004,7 @@ button {
   color: var(--green-light);
 
   font-size: 9px;
+
   letter-spacing: 2px;
 
   transition:
@@ -819,6 +1019,7 @@ button {
 
 .primary-button:hover {
   background: var(--green);
+
   color: var(--black);
 
   transform: translateY(-3px);
@@ -828,6 +1029,7 @@ button {
   color: var(--muted);
 
   font-size: 9px;
+
   letter-spacing: 2px;
 
   border-bottom: 1px solid transparent;
@@ -839,6 +1041,7 @@ button {
 
 .secondary-button:hover {
   color: var(--cream);
+
   border-color: var(--green);
 }
 
@@ -852,6 +1055,7 @@ button {
   top: 50%;
 
   width: clamp(320px, 36vw, 560px);
+
   aspect-ratio: 1;
 
   transform: translateY(-50%);
@@ -944,10 +1148,11 @@ button {
   width: 2px;
   height: 90px;
 
-  background: linear-gradient(
-    transparent,
-    var(--green)
-  );
+  background:
+    linear-gradient(
+      transparent,
+      var(--green)
+    );
 
   transform-origin: top;
 }
@@ -980,21 +1185,25 @@ button {
   position: absolute;
 
   bottom: 30px;
+
   left: clamp(24px, 7vw, 100px);
   right: clamp(24px, 7vw, 100px);
 
   display: flex;
   align-items: center;
+
   gap: 20px;
 
   color: #4d554f;
 
   font-size: 8px;
+
   letter-spacing: 3px;
 }
 
 .hero-bottom div {
   height: 1px;
+
   flex: 1;
 
   background: var(--border);
@@ -1030,6 +1239,7 @@ button {
   color: var(--green);
 
   font-size: 9px;
+
   letter-spacing: 4px;
 }
 
@@ -1061,6 +1271,7 @@ button {
   font-family: 'Cinzel', serif;
 
   font-size: 100px;
+
   line-height: 0.7;
 }
 
@@ -1156,6 +1367,7 @@ button {
 
 .portrait-placeholder span {
   position: relative;
+
   z-index: 2;
 
   font-family: 'Cinzel', serif;
@@ -1169,6 +1381,7 @@ button {
 
 .portrait-placeholder small {
   position: relative;
+
   z-index: 2;
 
   margin-top: 10px;
@@ -1176,6 +1389,7 @@ button {
   color: var(--muted);
 
   font-size: 9px;
+
   letter-spacing: 3px;
 }
 
@@ -1252,6 +1466,7 @@ button {
     );
 
   border-top: 1px solid var(--border);
+
   border-bottom: 1px solid var(--border);
 }
 
@@ -1296,6 +1511,7 @@ button {
   color: var(--muted);
 
   font-size: 9px;
+
   letter-spacing: 4px;
 }
 
@@ -1321,6 +1537,7 @@ button {
   grid-template-columns: repeat(3, 1fr);
 
   border-top: 1px solid var(--border);
+
   border-left: 1px solid var(--border);
 }
 
@@ -1335,6 +1552,7 @@ button {
   flex-direction: column;
 
   border-right: 1px solid var(--border);
+
   border-bottom: 1px solid var(--border);
 
   background:
@@ -1382,21 +1600,25 @@ button {
 .work-bottom,
 .work-content {
   position: relative;
+
   z-index: 2;
 }
 
 .work-top {
   display: flex;
+
   justify-content: space-between;
 
   color: #59625b;
 
   font-size: 9px;
+
   letter-spacing: 2px;
 }
 
 .work-content {
   margin-top: auto;
+
   margin-bottom: auto;
 }
 
@@ -1436,7 +1658,9 @@ button {
 
 .work-bottom {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   padding-top: 18px;
@@ -1446,6 +1670,7 @@ button {
   color: #535b55;
 
   font-size: 8px;
+
   letter-spacing: 2px;
 }
 
@@ -1493,6 +1718,7 @@ button {
 
 .mythos-heading {
   position: relative;
+
   z-index: 2;
 
   max-width: 750px;
@@ -1546,6 +1772,7 @@ button {
 
 .entities {
   position: relative;
+
   z-index: 2;
 
   display: grid;
@@ -1553,6 +1780,7 @@ button {
   grid-template-columns: repeat(4, 1fr);
 
   border-top: 1px solid var(--border);
+
   border-left: 1px solid var(--border);
 }
 
@@ -1562,6 +1790,7 @@ button {
   padding: 30px;
 
   border-right: 1px solid var(--border);
+
   border-bottom: 1px solid var(--border);
 
   transition:
@@ -1636,6 +1865,7 @@ button {
   flex-direction: column;
 
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
@@ -1708,10 +1938,14 @@ button {
 footer {
   min-height: 120px;
 
-  padding: 30px clamp(24px, 7vw, 100px);
+  padding:
+    30px
+    clamp(24px, 7vw, 100px);
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   border-top: 1px solid var(--border);
@@ -1725,6 +1959,7 @@ footer {
 
 .footer-brand {
   display: flex;
+
   flex-direction: column;
 
   color: var(--green);
@@ -1750,7 +1985,209 @@ footer {
 
 .footer-right {
   display: flex;
+
   gap: 25px;
+}
+
+/* ================================================= */
+/* ================= MODO CLARO ==================== */
+/* ================================================= */
+
+.light-mode {
+
+  --black: #eeeae0;
+  --black-soft: #e5e1d6;
+  --black-card: #f5f2e9;
+
+  --green: #405b47;
+  --green-light: #304a38;
+  --green-bright: #253d2d;
+
+  --cream: #252923;
+  --muted: #626961;
+
+  --gold: #75683c;
+
+  --border: rgba(55, 75, 61, 0.18);
+}
+
+.light-mode {
+  background:
+    radial-gradient(
+      ellipse at 50% -20%,
+      rgba(91, 119, 98, 0.14),
+      transparent 50%
+    ),
+    var(--black);
+
+  color: var(--cream);
+}
+
+.light-mode .navbar {
+  background: rgba(238, 234, 224, 0.88);
+}
+
+.light-mode .hero-grid {
+  opacity: 0.09;
+
+  background-image:
+    linear-gradient(
+      rgba(64, 91, 71, 0.3) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(64, 91, 71, 0.3) 1px,
+      transparent 1px
+    );
+}
+
+.light-mode .stars {
+  opacity: 0.25;
+
+  background-image:
+    radial-gradient(circle, #405b47 1px, transparent 1px),
+    radial-gradient(circle, #5b705f 1px, transparent 1px),
+    radial-gradient(circle, #687b6c 1px, transparent 1px);
+}
+
+.light-mode .symbol-orbit {
+  border-color: rgba(64, 91, 71, 0.2);
+}
+
+.light-mode .symbol-inner {
+  border-color: rgba(64, 91, 71, 0.35);
+
+  box-shadow:
+    0 0 80px rgba(64, 91, 71, 0.08),
+    inset 0 0 50px rgba(64, 91, 71, 0.05);
+}
+
+.light-mode .symbol-eye {
+  border-color: var(--green);
+}
+
+.light-mode .symbol-eye div {
+  background: var(--green);
+
+  box-shadow:
+    0 0 25px rgba(64, 91, 71, 0.4);
+}
+
+.light-mode .author {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(196, 202, 191, 0.4),
+      transparent
+    );
+}
+
+.light-mode .author-card {
+  background: var(--black-card);
+
+  box-shadow:
+    20px 20px 0 rgba(64, 91, 71, 0.04);
+}
+
+.light-mode .portrait-placeholder {
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(80, 110, 88, 0.2),
+      transparent 45%
+    ),
+    linear-gradient(
+      145deg,
+      #d9d7cc,
+      #ece9df
+    );
+}
+
+.light-mode .portrait-placeholder::before {
+  color: rgba(48, 74, 56, 0.05);
+}
+
+.light-mode .quote-section {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(79, 110, 87, 0.12),
+      transparent 55%
+    );
+}
+
+.light-mode .quote-symbol {
+  color: rgba(64, 91, 71, 0.1);
+}
+
+.light-mode .works {
+  background: var(--black-soft);
+}
+
+.light-mode .work-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.35),
+      rgba(218, 220, 210, 0.2)
+    );
+}
+
+.light-mode .work-card:hover {
+  background: #eeece3;
+}
+
+.light-mode .work-card::before {
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(83, 117, 91, 0.12),
+      transparent 55%
+    );
+}
+
+.light-mode .mythos {
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(78, 110, 86, 0.12),
+      transparent 40%
+    );
+}
+
+.light-mode .mythos::before {
+  color: rgba(64, 91, 71, 0.04);
+}
+
+.light-mode .entity:hover {
+  background: rgba(64, 91, 71, 0.05);
+}
+
+.light-mode .final-section {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(78, 110, 86, 0.08),
+      transparent 55%
+    );
+}
+
+.light-mode .final-glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(75, 113, 84, 0.12),
+      transparent 65%
+    );
+}
+
+.light-mode footer {
+  background: #dfdcd1;
+}
+
+.light-mode .theme-toggle:hover {
+  color: #f4f1e8;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -1759,6 +2196,10 @@ footer {
 
   .nav-status {
     display: none;
+  }
+
+  .nav-actions {
+    gap: 15px;
   }
 
   .cosmic-symbol {
@@ -1778,7 +2219,6 @@ footer {
   .entities {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media (max-width: 800px) {
@@ -1789,6 +2229,23 @@ footer {
 
   .nav-links {
     display: none;
+  }
+
+  .theme-text {
+    display: none;
+  }
+
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    justify-content: center;
+  }
+
+  .theme-toggle span:first-child {
+    font-size: 18px;
   }
 
   .hero {
@@ -1848,7 +2305,6 @@ footer {
 
     align-items: flex-start;
   }
-
 }
 
 @media (max-width: 500px) {
@@ -1861,6 +2317,7 @@ footer {
 
   .hero {
     padding-left: 20px;
+
     padding-right: 20px;
   }
 
@@ -1892,6 +2349,7 @@ footer {
 
   .section {
     padding-left: 20px;
+
     padding-right: 20px;
   }
 
@@ -1911,6 +2369,7 @@ footer {
 
   .quote-section {
     padding-left: 25px;
+
     padding-right: 25px;
   }
 
@@ -1921,6 +2380,5 @@ footer {
   .footer-center {
     display: none;
   }
-
 }
 </style>
